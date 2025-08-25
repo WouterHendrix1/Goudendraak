@@ -12,7 +12,7 @@
 
   <table class="table">
     <thead>
-      <tr><th>#</th><th>Gerecht</th><th>Aantal</th><th>Prijs/stuk</th><th>Subtotaal</th></tr>
+      <tr><th>#</th><th>Gerecht</th><th>Aantal</th><th>Prijs/stuk</th><th>Subtotaal</th><th>Opmerkingen</th></tr>
     </thead>
     <tbody>
       @foreach($bestelling->regels as $r)
@@ -22,6 +22,7 @@
           <td>{{ $r->aantal }}</td>
           <td>€ {{ number_format($r->prijs_per_stuk,2,',','.') }}</td>
           <td>€ {{ number_format($r->aantal * $r->prijs_per_stuk,2,',','.') }}</td>
+          <td>{{ $r->opmerking }}</td>
         </tr>
       @endforeach
     </tbody>
