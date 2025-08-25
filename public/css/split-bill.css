@@ -1,0 +1,110 @@
+/* ---------- Split Bill (tablet-first) ---------- */
+.split-bill {
+  --sb-bg: #ffffff;
+  --sb-text: #111827;
+  --sb-muted: #6b7280;
+  --sb-border: #e5e7eb;
+  --sb-head: #f9fafb;
+  --sb-shadow: 0 6px 24px rgba(15, 23, 42, 0.08);
+  --sb-radius: 18px;
+  color: var(--sb-text);
+}
+
+/* Header */
+.split-bill .page-header { margin: 8px 0 16px; }
+.split-bill .page-title { font-weight: 800; letter-spacing: -0.02em; line-height: 1.2; }
+.split-bill .page-title small { color: var(--sb-muted); font-weight: 500; }
+
+/* Grote card */
+.card-xl {
+  background: var(--sb-bg);
+  border: 1px solid var(--sb-border);
+  border-radius: var(--sb-radius);
+  box-shadow: var(--sb-shadow);
+  overflow: hidden;
+}
+.card-xl .card-body { padding: 18px 20px; }
+
+@media (min-width: 768px) and (max-width: 1199.98px) {
+  /* geef de pagina bijna volledige breedte op tablet */
+  .split-bill.container-xl { max-width: 98vw; }
+}
+@media (max-width: 767.98px) {
+  .card-xl .card-body { padding: 14px; }
+}
+
+/* Tabel in card met sticky header en nette scroll */
+.table-wrap {
+  overflow: auto;
+  border: 1px solid var(--sb-border);
+  border-radius: 14px;
+  -webkit-overflow-scrolling: touch;
+}
+.table-split {
+  width: 100%;
+  min-width: 880px;       /* ruim voor iPad/tablets */
+  border-collapse: separate;
+  border-spacing: 0;
+  background: #fff;
+}
+.table-split thead th {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  background: var(--sb-head);
+  border-bottom: 1px solid var(--sb-border);
+  padding: 12px 10px;
+  font-weight: 700;
+  text-align: left;
+}
+.table-split tbody td {
+  border-bottom: 1px solid var(--sb-border);
+  padding: 10px;
+  vertical-align: middle;
+}
+.table-split tbody tr:nth-child(odd) td {
+  background: #fcfcfd;
+}
+
+/* Kolombreedtes */
+.col-id  { width: 74px; text-align: center; }
+.col-qty { width: 110px; text-align: center; }
+.col-dish { min-width: 260px; }
+.col-cust { width: 140px; text-align: center; }
+
+/* Inputs */
+.input-qty {
+  width: 100%;
+  max-width: 120px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 8px 10px;
+}
+.input-qty:focus {
+  outline: 0;
+  border-color: #93c5fd;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, .25);
+}
+.input-qty::-webkit-outer-spin-button,
+.input-qty::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+.input-qty[type=number] { -moz-appearance: textfield; }
+
+/* Acties */
+.actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 16px;
+  flex-wrap: wrap;
+}
+.actions .btn { padding: 10px 16px; border-radius: 10px; }
+
+/* Validatiekleur voor te grote som */
+.row-invalid td { background: #fff1f2 !important; }
+
+/* Compactere spacing op tablet */
+@media (max-width: 1199.98px) {
+  .card-xl .card-body { padding: 16px; }
+  .table-split thead th, .table-split tbody td { padding: 9px 8px; }
+  .col-cust { width: 120px; }
+  .input-qty { max-width: 100px; }
+}

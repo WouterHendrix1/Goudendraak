@@ -1,0 +1,172 @@
+/* =========================
+   Nieuwe bestelling (tablet-first)
+   File: public/css/orders.css
+   ========================= */
+
+/* Gebruik sitekleuren via Bootstrap CSS vars */
+:root{
+  --o-text: var(--bs-body-color);
+  --o-muted: var(--bs-secondary-color, #6c757d);
+  --o-border: var(--bs-border-color, #dee2e6);
+  --o-bg: var(--bs-body-bg, #fff);
+  --o-head: var(--bs-tertiary-bg, #f8f9fa);
+  --o-shadow: var(--bs-box-shadow-sm, 0 .125rem .25rem rgba(0,0,0,.075));
+  --o-radius: var(--bs-border-radius-lg, 1rem);
+}
+
+body{ color:var(--o-text); }
+
+/* ---------------------------------------
+   Layout / spacing
+--------------------------------------- */
+.container-lg,
+.container-fluid{ scroll-margin-top: 2rem; }
+
+.tablet-toolbar{
+  display:flex; align-items:center; justify-content:space-between;
+  gap:16px; flex-wrap:wrap; margin-bottom: .75rem;
+}
+.tablet-toolbar h1{ font-weight:800; letter-spacing:-.02em; margin:0; color: yellow; }
+
+.section-card{
+  background:var(--o-bg);
+  border:1px solid var(--o-border);
+  border-radius:var(--o-radius);
+  box-shadow:var(--o-shadow);
+  padding:20px 22px;
+  margin-bottom:1.25rem; /* extra lucht tussen componenten */
+}
+.section-card .form-label{ font-weight:700; }
+.section-card .text-muted{ color:var(--o-muted) !important; }
+
+/* iets meer lucht tussen stacked controls */
+.section-card .form-group + .form-group,
+.section-card .row > [class*="col-"] + [class*="col-"]{ margin-top:.5rem; }
+
+/* ---------------------------------------
+   Klanten kaarten
+--------------------------------------- */
+.customer-card{
+  background:var(--bs-tertiary-bg, #f8f9fa);
+  border:1px solid var(--o-border);
+  border-radius: .75rem;
+  transition: background .15s ease, border-color .15s ease;
+}
+.customer-card:hover{ background:color-mix(in srgb, var(--bs-tertiary-bg) 92%, #fff 8%); }
+
+/* ---------------------------------------
+   Inputs / focus
+--------------------------------------- */
+.section-card .form-control,
+.qty-input{
+  padding:11px 12px;
+  font-size:1rem;
+  border-radius:.6rem;
+  border-color:var(--o-border);
+}
+.section-card .form-control:focus,
+.qty-input:focus{
+  border-color: var(--bs-primary, #0d6efd);
+  box-shadow: 0 0 0 .25rem rgba(var(--bs-primary-rgb,13,110,253), .25);
+  outline:0;
+}
+
+/* ---------------------------------------
+   Gerechten-tabel
+--------------------------------------- */
+.table-responsive-md{ border-radius:.9rem; overflow:auto; }
+
+.table-sticky{
+  width:100%;
+  border-collapse:separate; border-spacing:0;
+  background:#fff;
+}
+.table-sticky thead th{
+  position:sticky; top:0; z-index:2;
+  background:var(--o-head);
+  border-bottom:1px solid var(--o-border) !important;
+  padding:12px 12px; font-weight:700;
+}
+.table-sticky tbody td{
+  vertical-align:middle;
+  padding:12px 10px;
+  border-color:var(--o-border) !important;
+}
+.table-sticky tbody tr:nth-child(odd) td{
+  background: color-mix(in srgb, #fff 96%, var(--o-head) 4%);
+}
+
+/* Kolombreedtes */
+.table-sticky th[style*="width:70px"]{ width:74px !important; text-align:center; }
+.table-sticky th[style*="width:140px"]{ width:140px !important; }
+.table-sticky th[style*="width:180px"]{ width:200px !important; }
+.table-sticky td:nth-child(1){ text-align:center; }
+.table-sticky td:nth-child(3){ white-space:nowrap; }
+
+/* ---------------------------------------
+   Aantal stepper
+--------------------------------------- */
+.qty-group{
+  display:grid; grid-template-columns:44px minmax(90px,1fr) 44px;
+  gap:8px; align-items:stretch;
+}
+.qty-group .btn{
+  border-radius:.6rem; padding:0;
+  line-height:44px; height:44px; font-size:1.25rem; font-weight:700;
+}
+.qty-input{
+  text-align:center; height:44px; font-weight:600;
+}
+
+/* Spinners verbergen */
+.qty-input::-webkit-outer-spin-button,
+.qty-input::-webkit-inner-spin-button{ -webkit-appearance:none; margin:0; }
+.qty-input[type=number]{ -moz-appearance:textfield; }
+
+/* ---------------------------------------
+   Alerts / Buttons
+--------------------------------------- */
+.alert{ border-radius:.75rem; }
+.alert-danger{
+  border-color: color-mix(in srgb, var(--bs-danger) 30%, #fff 70%);
+  background: color-mix(in srgb, var(--bs-danger) 10%, #fff 90%);
+  color: color-mix(in srgb, var(--bs-danger) 65%, #000 35%);
+}
+
+/* laat Bootstrap kleuren bepalen; geen custom background meer */
+.d-grid.gap-2 .btn, .d-md-flex.gap-2 .btn{
+  border-radius:.75rem; padding:10px 16px;
+}
+.btn-success.btn-lg{ font-weight:700; }
+/* verwijderde custom: .btn-outline-secondary.btn-lg { background:#fff; } */
+
+/* ---------------------------------------
+   Responsive tuning
+--------------------------------------- */
+@media (max-width:1199.98px){
+  .section-card{ padding:18px 18px; }
+  .table-sticky thead th, .table-sticky tbody td{ padding:10px 9px; }
+  .qty-group{ grid-template-columns:42px minmax(80px,1fr) 42px; }
+  .qty-group .btn, .qty-input{ height:42px; line-height:42px; }
+  /* Opmerking-kolom iets ruimer en netjes op tablet */
+  .input-remark{ min-width: 220px; }
+  .table-sticky th[style*="width:260px"]{ width:260px !important; }
+}
+
+@media (max-width:576px){
+  .tablet-toolbar{ gap:10px; }
+  .tablet-toolbar .btn{ width:100%; }
+  .qty-group{ grid-template-columns:38px 1fr 38px; }
+  .qty-group .btn, .qty-input{ height:38px; line-height:38px; }
+  .table-sticky{ min-width:560px; } /* horizontaal scrollen indien nodig */
+}
+
+/* ---------------------------------------
+   Zoeken/filter-bar (Vue blok)
+--------------------------------------- */
+#order-search-root .form-label{ margin-bottom:.4rem; }
+#order-search-root .qty-group .btn{ font-weight:700; }
+
+/* Extra lucht tussen componenten als utility */
+.section-card + .section-card{ margin-top:1.25rem; }
+
