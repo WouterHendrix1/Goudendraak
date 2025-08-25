@@ -18,9 +18,7 @@ Route::get('/', function () {
 Route::get('/menu', [MenuController::class, 'index'])->name('menu');
 Route::get('/menu/pdf', [MenuController::class, 'pdf'])->name('menu.pdf');
 Route::get('/nieuws', [NewsController::class, 'index'])->name('nieuws');
-Route::get('/contact', function () {
-    return view('/contact.index');
-})->name('contact');
+Route::get('/contact', function () {return view('/contact.index');})->name('contact');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -42,7 +40,6 @@ Route::middleware(['auth', 'admin'])->group(function () {
         Route::get('/{id}/delen', [AdminOrderController::class, 'delen'])->name('delen');
         Route::post('/{id}/delen', [AdminOrderController::class, 'storeDelen'])->name('storeDelen');
         Route::get('/{id}/pdf', [AdminOrderController::class, 'pdf'])->name('pdf');
-
     });
 
     Route::get('/tafel/{tafel}/bestelling', [AdminOrderController::class, 'createFromTafel'])->name('tafel.bestelling.create');
@@ -72,18 +69,6 @@ Route::middleware(['auth', 'admin'])->group(function () {
         Route::get('/', [SalesController::class, 'index'])->name('index');
     });
 
-    Route::get('{tafel}/registreer', [KlantController::class, 'create'])->name('klant.create');
-    Route::post('{tafel}/registreer', [KlantController::class, 'store'])->name('klant.store');
-
-
-});
-
-
-
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
 require __DIR__.'/auth.php';

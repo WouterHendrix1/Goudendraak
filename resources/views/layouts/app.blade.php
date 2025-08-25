@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>De Guldendraak</title>
+    <title>De Goudendraak</title>
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     @stack('styles')
 </head>
 <body>
 
     {{-- Navigatie --}}
-    <header class="main-header">
-        <h1>De Guldendraak</h1>
+    <header class="main-header">       
+        <h1>De Goudendraak</h1>
         <nav class="main-nav">
             <a href="{{ url('/') }}">Home</a>
             <a href="{{ url('/menu') }}">Menu</a>
@@ -36,9 +36,9 @@
 
     {{-- Footer --}}
     <footer class="main-footer">
-        <p><strong>De Guldendraak</strong></p>
+        <p><strong>De Goudendraak</strong></p>
         <p>Marktstraat 12, 1234 AB, Stad</p>
-        <p>📞 012-3456789 | ✉ info@guldendraak.nl</p>
+        <p>📞 012-3456789 | ✉ info@Goudendraak.nl</p>
         <p>
             <a href="https://maps.google.com/?q=Marktstraat+12+1234+AB" target="_blank">Bekijk op Google Maps</a>
         </p>
