@@ -20,6 +20,16 @@ class DishController extends Controller
         return view('admin.dishes.create', compact('categories'));
     }
 
+    public function createCategory(Request$request)
+    {
+        $data = $request->validate([
+            'naam' => 'required|string|max:255',
+        ]);
+
+        GerechtCategorie::create($data);
+        return redirect()->route('admin.dishes.index')->with('success', 'Categorie toegevoegd.');
+    }
+
     public function store(Request $request)
     {
         $data = $request->validate([

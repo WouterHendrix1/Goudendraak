@@ -17,6 +17,16 @@
         </div>
     @endif
 
+    <form action="{{ route('admin.dishes.createCategory') }}" method="POST">
+        @csrf
+        <div class="mb-3">
+            <label for="naam" class="form-label">Naam</label>
+            <input type="text" name="naam" id="naam" class="form-control" required autofocus value="{{ old('naam') }}">
+        </div>
+
+        <button type="submit" class="btn btn-success">Categorie Toevoegen</button>
+    </form>
+
     <form action="{{ route('admin.dishes.store') }}" method="POST">
         @csrf
 

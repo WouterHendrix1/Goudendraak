@@ -53,6 +53,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
         Route::get('/{id}/edit', [DishController::class, 'edit'])->name('edit');
         Route::put('/{id}', [DishController::class, 'update'])->name('update');
         Route::delete('/{id}', [DishController::class, 'destroy'])->name('destroy');
+        Route::post('/create-category', [DishController::class, 'createCategory'])->name('createCategory');
     });
 
     Route::prefix('admin/nieuws')->name('admin.news.')->group(function () {
