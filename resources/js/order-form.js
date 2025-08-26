@@ -52,7 +52,6 @@ if (root) {
   }).mount(root)
 }
 
-// Optioneel: qty-stepper voor gerechten (buiten Vue)
 window.stepQty = function (idx, delta) {
   const input = document.getElementById('qty_' + idx)
   if (!input) return
